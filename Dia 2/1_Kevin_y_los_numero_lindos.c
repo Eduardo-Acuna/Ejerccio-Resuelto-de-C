@@ -1,17 +1,17 @@
-/*KEVIN Y LOS NÚMEROS LINDOS 2024-1
-Kevin ama cuando los números son lindos. Y él sabe que un número es lindo si
-el mismo es entero positivo cuya representación decimal contiene sólo los
-dígitos 4 y 7. Por ejemplo 77, 44, 744 son números lindos, pero 5, 17 y 467 no lo
+/*KEVIN Y LOS NÃšMEROS LINDOS 2024-1
+Kevin ama cuando los nÃºmeros son lindos. Y Ã©l sabe que un nÃºmero es lindo si
+el mismo es entero positivo cuya representaciÃ³n decimal contiene sÃ³lo los
+dÃ­gitos 4 y 7. Por ejemplo 77, 44, 744 son nÃºmeros lindos, pero 5, 17 y 467 no lo
 son.
-Desafortunadamente, no todos los números son totalmente lindos, Kevin llama
-a un número totalmente lindo solo si el número de dígitos lindos es un numero
-lindo en si (4 y 7). Escriba un algoritmo para determinar si un número n
+Desafortunadamente, no todos los nÃºmeros son totalmente lindos, Kevin llama
+a un nÃºmero totalmente lindo solo si el nÃºmero de dÃ­gitos lindos es un numero
+lindo en si (4 y 7). Escriba un algoritmo para determinar si un nÃºmero n
 es lindo o totalmente lindos para Kevin o no.
 
 Entrada:
-Una única línea que contiene un número entero n (0 < n <231)
+Una Ãºnica lÃ­nea que contiene un nÃºmero entero n (0 < n <231)
 Salida:
-Imprimir "SI" si el número es lindo o totalmente lindo para Kevin y "NO" en
+Imprimir "SI" si el nÃºmero es lindo o totalmente lindo para Kevin y "NO" en
 caso contrario.
 
 Ejemplos:
@@ -23,48 +23,22 @@ Entrada
 7747774
 Salida
 SI*/
+# include <stdio.h>
 
-#include <stdio.h>
+int es_lindo( int n);
+int es_totalmente_lindo(int n);
 
-// Función para verificar si un número es lindo
-int esLindo(int num) {
-    while (num > 0) {
-        int digito = num % 10;
-        if (digito != 4 && digito != 7) {
-            return 0; // No es lindo
-        }
-        num /= 10;
+int main(){
+    int n ,nro_lindo, total_lindo;
+    scanf("%d",&n);
+    if( n<0 || n>2147483648){
+        return 0;
     }
-    return 1; // Es lindo
-}
 
-// Función para contar la cantidad de dígitos lindos en un número
-int contarDigitosLindos(int num) {
-    int contador = 0;
-    while (num > 0) {
-        int digito = num % 10;
-        if (digito == 4 || digito == 7) {
-            contador++;
-        }
-        num /= 10;
-    }
-    return contador;
-}
+    nro_lindo = es_lindo(n);
+    total_lindo = es_totalmente_lindo(n);
 
-// Función para verificar si un número es totalmente lindo
-int esTotalmenteLindo(int num) {
-    int cantidad = contarDigitosLindos(num);
-    return esLindo(cantidad);
-}
-
-int main() {
-    int n;
-
-    // Leer la entrada
-    scanf("%d", &n);
-
-    // Verificar si el número es lindo o totalmente lindo
-    if (esLindo(n) || esTotalmenteLindo(n)) {
+    if( nro_lindo || total_lindo ){
         printf("SI\n");
     } else {
         printf("NO\n");
@@ -74,4 +48,29 @@ int main() {
 }
 
 
+int es_lindo( int n){
+    int dig;
+    while(n>0){
+        dig = n % 10;
+        if( dig!=4 && dig!=7 ){
+            return 0; //no es lindo
+        }
+        n=n/10;
+    }
+    return 1;// si es lindo
+}
 
+
+int es_totalmente_lindo(int n){
+    int nro_lindo, cont, dig;
+    cont = 0;
+    while(n>0){
+        dig = n % 10;
+        if( dig==4 || dig==7){
+           cont++;
+        }
+        n /= 10;
+    }
+    nro_lindo = es_lindo(cont);
+    return nro_lindo;
+}
