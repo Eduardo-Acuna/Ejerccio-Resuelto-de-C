@@ -6,8 +6,7 @@
 
 void cargar_mat(int mat[F][C], int d);
 void mostar_mat(int mat[F][C], int d);
-void rotar_mat(int mat[F][C],int d);
-
+void rotar_mat(int mat[F][C], int d);
 
 int main(){
 
@@ -30,7 +29,7 @@ int main(){
 
 
 void rotar_mat(int mat[F][C],int d){
-    int i,j,aux1, aux2;
+    int i, j, aux1, aux2;
 
     //TRANSPONER LA MATRIZ
     for( i=0 ; i<d ; i++ ){
