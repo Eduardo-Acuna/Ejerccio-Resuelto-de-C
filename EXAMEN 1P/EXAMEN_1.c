@@ -35,14 +35,13 @@ Salida
 18937
 */
 
-
 # include <stdio.h>
 
 void posicion(int k);
 int es_lindo(int num);
 
 int main(){
-    int j, i ,n ,k;
+    int i ,n ,k;
 
     scanf("%d",&n);
     if( n<1 || n>100){
@@ -68,7 +67,6 @@ int main(){
 void posicion(int k){
     int i,pos;
     pos=0;
-
     for( i=1 ; i<1000000 ; i++){
         if(es_lindo(i)==1){
             pos=pos+1;
@@ -80,7 +78,7 @@ void posicion(int k){
 }
 
 int es_lindo(int num){
-    int resp;
+    
     while (num > 0){
         if (num % 10 == 4){
             return 0;
